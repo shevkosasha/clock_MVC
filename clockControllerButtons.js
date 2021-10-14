@@ -1,14 +1,12 @@
 function ClockController () {
     let myClockContainer = null;
     let myClockModel = null;
-    let myTimezone;
     let btns = null;
     
 
-    this.init = function(model,container,timezone) { // получаем кнопки и вешаем обработчики
+    this.init = function(model,container) { // получаем кнопки и вешаем обработчики
         myClockContainer = container;
         myClockModel = model;
-        myTimezone = timezone;
 
         selectTimezone = myClockContainer.querySelector(".select_timezone");
         btns = myClockContainer.querySelectorAll("button");
@@ -23,13 +21,12 @@ function ClockController () {
         });
         selectTimezone.addEventListener('change',this.selectHandler);
 
-        this.setTimezone(myTimezone);
+        // this.setTimezone(myTimezone);
     }
 
     this.selectHandler = (e) => {
       e.preventDefault();
-      myTimezone = e.target.value;
-      this.setTimezone(myTimezone);
+      this.setTimezone(e.target.value);
     }
 
     this.startClocks = (e) => {
