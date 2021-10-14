@@ -82,18 +82,6 @@ function ClockModel () {
     
   }
 
-//   function createList(){
-//     for ( let i = 0; i < arr.length; i++){            
-//         let num = getRandomNum(0, 6);             
-//         if (nums.indexOf(num) < 0) {
-//             nums[i] = num;
-//             currentArr[i] = arr[num];//заполняем массив текущими значениями
-//             createElem('div', arr[num],parent,arr[num],'list');
-//             document.getElementById(arr[num]).draggable = true;
-//         } else {i--;}
-//     }
-// }
-
 
 
 
