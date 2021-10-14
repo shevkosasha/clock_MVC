@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>clock_MVC</title>
+	<style>
+		.clock { 
+			margin: 30px;
+			position:relative;
+		}
+        .clock_container {
+			margin: 10px;
+            border-radius: 50%;				
+            position:relative;
+        }
+		.num {
+			border-radius: 50%; 
+			position: absolute;
+			text-align: center;
+		}
+		.arrow {
+			border-radius: 50%; 
+			position:absolute;
+			transform-origin: 20px 50%;
+			transform: rotate(-90deg);}
+	</style>
+</head>
+<body>
+
+	<table>
+		<tr><th>DOM</th><th>SVG</th><th>Canvas</th></tr>
+		<tr>
+		  <td>
+			<div id="container_DOM_1" class="clock">
+				<button class="start">Start</button>
+				<button class="stop">Stop</button>
+				<span class="timezone">Timezone</span>
+				<select name="select" class="select_timezone"> 
+					<!-- <option value="America/New_York">America/New_York</option>
+					<option value="Europe/London">Europe/London</option>
+					<option value="Europe/Berlin">Europe/Berlin</option>
+					<option value="Europe/Minsk">Europe/Minsk</option>
+					<option value="Asia/Tokyo">Asia/Tokyo</option>
+					<option value="Asia/Vladivostok">Asia/Vladivostok</option> -->
+				</select>
+				<div class="clock_container"></div>
+			</div>
+		  </td>
+		  <td>	
+			<div id="container_SVG_1" class="clock">
+				<button class="start">Start</button>
+				<button class="stop">Stop</button>
+				<span class="timezone">Timezone</span>
+				<select name="select" class="select_timezone"> 
+					<!-- <option value="America/New_York">America/New_York</option>
+					<option value="Europe/London">Europe/London</option>
+					<option value="Europe/Berlin">Europe/Berlin</option>
+					<option value="Europe/Minsk">Europe/Minsk</option>
+					<option value="Asia/Tokyo">Asia/Tokyo</option>
+					<option value="Asia/Vladivostok">Asia/Vladivostok</option> -->
+				</select>
+				<div class="clock_container"></div>
+			</div>
+		  </td>
+		  <td>
+			<div id="container_canvas_1" class="clock">
+				<button class="start">Start</button>
+				<button class="stop">Stop</button>
+				<span class="timezone">Timezone</span>
+				<select name="select" class="select_timezone"> 
+					<!-- <option value="America/New_York">America/New_York</option>
+					<option value="Europe/London">Europe/London</option>
+					<option value="Europe/Berlin">Europe/Berlin</option>
+					<option value="Europe/Minsk">Europe/Minsk</option>
+					<option value="Asia/Tokyo">Asia/Tokyo</option>
+					<option value="Asia/Vladivostok">Asia/Vladivostok</option> -->
+				</select>
+				<div class="clock_container"></div>
+			</div>
+		  </td>
+		</tr>
+		<tr>
+			<td>
+				<div id="container_DOM_2" class="clock">
+					<button class="start">Start</button>
+					<button class="stop">Stop</button>
+					<span class="timezone">Timezone</span>
+					<select name="select" class="select_timezone"> 
+						<!-- <option value="America/New_York">America/New_York</option>
+						<option value="Europe/London">Europe/London</option>
+						<option value="Europe/Berlin">Europe/Berlin</option>
+						<option value="Europe/Minsk">Europe/Minsk</option>
+						<option value="Asia/Tokyo">Asia/Tokyo</option>
+						<option value="Asia/Vladivostok">Asia/Vladivostok</option> -->
+					</select>
+					<div class="clock_container"></div>
+				</div>
+			</td>
+			<td>
+				<div id="container_SVG_2" class="clock">
+					<button class="start">Start</button>
+					<button class="stop">Stop</button>
+					<span class="timezone">Timezone</span>
+					<select name="select" class="select_timezone"> 
+						<!-- <option value="America/New_York">America/New_York</option>
+						<option value="Europe/London">Europe/London</option>
+						<option value="Europe/Berlin">Europe/Berlin</option>
+						<option value="Europe/Minsk">Europe/Minsk</option>
+						<option value="Asia/Tokyo">Asia/Tokyo</option>
+						<option value="Asia/Vladivostok">Asia/Vladivostok</option> -->
+					</select>
+					<div class="clock_container"></div>
+				</div>
+			</td>
+			<td>
+				<div id="container_canvas_2" class="clock">
+					<button class="start">Start</button>
+					<button class="stop">Stop</button>
+					<span class="timezone">Timezone</span>
+					<select name="select" class="select_timezone"> 
+						<!-- <option value="America/New_York">America/New_York</option>
+						<option value="Europe/London">Europe/London</option>
+						<option value="Europe/Berlin">Europe/Berlin</option>
+						<option value="Europe/Minsk">Europe/Minsk</option>
+						<option value="Asia/Tokyo">Asia/Tokyo</option>
+						<option value="Asia/Vladivostok">Asia/Vladivostok</option> -->
+					</select>
+					<div class="clock_container"></div>
+				</div>
+			</td>
+		</tr>
+	  </table>
+
+    
+    <script src="clockViewDOM.js"></script>
+    <script src="clockViewSVG.js"></script>
+    <script src="clockViewCanvas.js"></script>
+    <script src="clock.js"></script>
+    <script src="clockControllerButtons.js"></script>
+
+	<script>
+		window.onload = function() {
+			//clock DOM 1
+			const DOMController1 = new ClockController();
+			const DOMView1 = new ClockViewDOM();
+			const DOMModel1 = new ClockModel();
+
+			const containerDOM1 = document.getElementById('container_DOM_1');
+
+			DOMView1.init(containerDOM1);
+			DOMModel1.init(DOMView1,'America/New_York'); 
+			DOMController1.init(DOMModel1,containerDOM1,'America/New_York');
+
+			//clock DOM 2
+			const DOMController2 = new ClockController();
+			const DOMView2 = new ClockViewDOM();
+			const DOMModel2 = new ClockModel();
+
+			const containerDOM2 = document.getElementById('container_DOM_2');
+
+			DOMView2.init(containerDOM2);
+			DOMModel2.init(DOMView2,'Europe/London'); 
+			DOMController2.init(DOMModel2,containerDOM2,'Europe/London');
+
+			//clock SVG 1
+			const SVGController1 = new ClockController();
+			const SVGView1 = new ClockViewSVG();
+			const SVGModel1 = new ClockModel();
+
+			const containerSVG1 = document.getElementById('container_SVG_1');
+
+			SVGView1.init(containerSVG1);
+			SVGModel1.init(SVGView1,'Europe/Berlin'); 
+			SVGController1.init(SVGModel1,containerSVG1,'Europe/Berlin');
+
+			//clock SVG 2
+			const SVGController2 = new ClockController();
+			const SVGView2 = new ClockViewSVG();
+			const SVGModel2 = new ClockModel();
+
+			const containerSVG2 = document.getElementById('container_SVG_2');
+
+			SVGView2.init(containerSVG2);
+			SVGModel2.init(SVGView2,'Europe/Minsk'); 
+			SVGController2.init(SVGModel2,containerSVG2,'Europe/Minsk');
+			
+			//clock canvas 1
+			const CanvasController1 = new ClockController();
+			const CanvasView1 = new ClockViewCanvas();
+			const CanvasModel1 = new ClockModel();
+
+			const containerCanvas1 = document.getElementById('container_canvas_1');
+
+			CanvasView1.init(containerCanvas1);
+			CanvasModel1.init(CanvasView1,'Asia/Tokyo'); 
+			CanvasController1.init(CanvasModel1,containerCanvas1,'Asia/Tokyo');
+
+			//clock canvas 2
+			const CanvasController2 = new ClockController();
+			const CanvasView2 = new ClockViewCanvas();
+			const CanvasModel2 = new ClockModel();
+
+			const containerCanvas2 = document.getElementById('container_canvas_2');
+
+			CanvasView2.init(containerCanvas2);
+			CanvasModel2.init(CanvasView2,'Asia/Vladivostok'); 
+			CanvasController2.init(CanvasModel2,containerCanvas2,'Asia/Vladivostok');
+		}
+        
+
+	</script>
+
+</body>
+</html>
