@@ -2,9 +2,11 @@
 function ClockModel () {
    
     let myClockView = null;
-    let timer = null;
-   
     let myTimezone;
+
+    let timer = null;
+    let isStarted;
+    
     let radius = 150;
     const settings = {
       clock:{radius: radius, 
@@ -56,15 +58,21 @@ function ClockModel () {
       myClockView.update(curTime);
     }
 
-    this.setInterval = () => timer = setInterval(this.setTime,1000);
-
-    this.clearInterval = () => clearInterval(timer);
-
     this.setTimezone = timezone => myTimezone = timezone;
 
+    this.setInterval = () => timer = setInterval(this.setTime,1000);
+
+    this.clearInterval = () => {
+      clearInterval(timer);
+      isStarted = false;
+    }
+
     this.start = () => {
-      this.setTime();
-      this.setInterval();
+      if (!isStarted) {
+        this.setTime();
+        this.setInterval();
+        isStarted = true;
+      }
     }
     
     this.setParams = function(){
